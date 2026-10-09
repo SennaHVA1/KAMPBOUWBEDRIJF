@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kamp Bouwbedrijf | Bouwen sinds 1872 in Heerhugowaard</title>
+<meta name="description" content="Kamp Bouwbedrijf uit Heerhugowaard: nieuwbouw, verbouw, renovatie en onderhoud. Familiebedrijf in de 5e generatie, sinds 1872. Onderdeel van Thuis in Bouwen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#4cae4c;
+    --green-d:#3a913b;
+    --green-l:#e9f5e8;
+    --ink:#1b2226;
+    --ink-2:#2a3338;
+    --muted:#5f6b70;
+    --line:#e4e7e6;
+    --paper:#f6f5f1;
+    --white:#fff;
+    --r:4px;
+    --wrap:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Archivo',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .wide{font-stretch:125%;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;font-weight:800}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-d)}
+  .eyebrow::before{content:"";width:28px;height:3px;background:var(--green)}
+  h2.title{font-size:clamp(30px,4.4vw,54px);margin:14px 0 18px}
+  .lead{font-size:19px;color:var(--muted);max-width:640px}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;border-radius:var(--r);transition:background .2s,transform .2s,color .2s;border:2px solid transparent;cursor:pointer;font-family:inherit}
+  .btn svg{width:18px;height:18px;transition:transform .2s}
+  .btn:hover svg{transform:translateX(4px)}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-green:hover{background:var(--green-d)}
+  .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--ink)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:var(--ink-2)}
+
+  /* top bar */
+  .topbar{background:var(--ink);color:#c9d0d2;font-size:14px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px;gap:20px}
+  .topbar a:hover{color:#fff}
+  .topbar .tb-l{display:flex;gap:26px}
+  .topbar .score{display:flex;align-items:center;gap:8px}
+  .topbar .score b{color:var(--green);font-size:15px}
+
+  /* header */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+  header.nav.scrolled{box-shadow:0 8px 30px rgba(27,34,38,.08)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
+  .logo img{height:26px;width:auto}
+  .menu{display:flex;align-items:center;gap:30px;font-weight:600;font-size:15px}
+  .menu a:not(.btn){position:relative;padding:6px 0}
+  .menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--green);transition:width .25s}
+  .menu a:not(.btn):hover::after{width:100%}
+  .menu .btn{padding:13px 20px;font-size:13px}
+  .burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
+  .burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--ink);transition:.3s}
+  .burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+  .burger.open span:nth-child(1){top:21px;transform:rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
+
+  /* hero */
+  .hero{position:relative;min-height:calc(100vh - 126px);min-height:calc(100svh - 126px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--ink)}
+  .hero-bg{position:absolute;inset:0;background:url(img/v27.jpg) center 60%/cover no-repeat;transform:scale(1.06);animation:zoom 14s ease-out forwards}
+  @keyframes zoom{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,20,22,.88) 0%,rgba(15,20,22,.55) 45%,rgba(15,20,22,.1) 100%),linear-gradient(0deg,rgba(15,20,22,.7) 0%,transparent 40%)}
+  .hero .wrap{position:relative;z-index:2;width:100%;padding-top:80px;padding-bottom:0}
+  .hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);padding:8px 16px 8px 8px;border-radius:40px;font-size:14px;font-weight:500;margin-bottom:26px}
+  .hero-badge span{background:var(--green);border-radius:30px;padding:3px 10px;font-weight:700;font-size:12px;letter-spacing:.06em}
+  .hero h1{font-size:clamp(40px,7vw,92px);max-width:900px}
+  .hero h1 em{font-style:normal;color:var(--green)}
+  .hero p.sub{font-size:clamp(17px,1.6vw,21px);max-width:580px;margin:26px 0 36px;color:#dfe5e6}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:14px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;border-top:1px solid rgba(255,255,255,.2)}
+  .stat{padding:28px 24px 34px 0}
+  .stat + .stat{padding-left:24px;border-left:1px solid rgba(255,255,255,.2)}
+  .stat b{display:block;font-size:clamp(32px,3.6vw,48px);font-stretch:125%;font-weight:800;line-height:1}
+  .stat b small{font-size:.5em;color:var(--green);margin-left:2px}
+  .stat span{display:block;margin-top:8px;color:#bfc7c9;font-size:15px}
+
+  section{padding:120px 0}
+
+  /* intro */
+  .intro .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center}
+  .intro-img{position:relative}
+  .intro-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+  .intro-img .stamp{position:absolute;right:-30px;bottom:40px;background:var(--green);color:#fff;padding:26px 30px;border-radius:var(--r);box-shadow:0 20px 40px rgba(27,34,38,.2)}
+  .stamp b{display:block;font-size:46px;font-stretch:125%;font-weight:900;line-height:1}
+  .stamp span{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .intro p{color:var(--muted);margin-bottom:18px}
+  .intro p strong{color:var(--ink)}
+  .checks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:32px 0 38px}
+  .checks li{display:flex;gap:12px;align-items:flex-start;font-weight:600}
+  .checks li::before{content:"";flex:0 0 22px;height:22px;border-radius:50%;background:var(--green-l) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a913b' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat;margin-top:2px}
+
+  /* services */
+  .services{background:var(--paper)}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px}
+  .sec-head .lead{max-width:440px}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .svc{background:#fff;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+  .svc:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(27,34,38,.12)}
+  .svc-img{aspect-ratio:16/10;overflow:hidden;position:relative}
+  .svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+  .svc:hover .svc-img img{transform:scale(1.06)}
+  .svc-num{position:absolute;top:16px;left:16px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:3px;letter-spacing:.08em}
+  .svc-body{padding:28px 28px 32px;flex:1;display:flex;flex-direction:column}
+  .svc h3{font-size:22px;margin-bottom:10px}
+  .svc p{color:var(--muted);font-size:16px;flex:1}
+  .svc .more{margin-top:20px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--green-d);display:inline-flex;gap:8px;align-items:center}
+
+  /* projects */
+  .projects{background:var(--ink);color:#fff}
+  .projects .lead{color:#aab4b7}
+  .projects .eyebrow{color:var(--green)}
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:16px}
+  .tile{position:relative;overflow:hidden;border-radius:var(--r);cursor:zoom-in;background:#11171a}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s,opacity .4s}
+  .tile:hover img{transform:scale(1.05);opacity:.85}
+  .tile.big{grid-column:span 2;grid-row:span 2}
+  .tile.tall{grid-row:span 2}
+  .tile.wide-t{grid-column:span 2}
+  .tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:50px 20px 18px;background:linear-gradient(0deg,rgba(10,14,16,.85),transparent);font-weight:700;font-size:16px;transform:translateY(8px);opacity:.92;transition:.35s}
+  .tile figcaption small{display:block;font-weight:500;color:var(--green);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+  .tile:hover figcaption{transform:none;opacity:1}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;counter-reset:s}
+  .step{padding:34px 30px 10px 0;border-top:3px solid var(--line);position:relative}
+  .step::before{content:"";position:absolute;top:-3px;left:0;width:56px;height:3px;background:var(--green)}
+  .step + .step{padding-left:30px}
+  .step + .step::before{left:30px}
+  .step i{font-style:normal;font-size:56px;font-stretch:125%;font-weight:900;color:var(--line);line-height:1;display:block;margin-bottom:16px}
+  .step h3{font-size:20px;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:16px}
+
+  /* model homes */
+  .models{padding:0}
+  .models-inner{display:grid;grid-template-columns:1fr 1fr;min-height:640px}
+  .models-img{background:url(img/schuurwoning-uitgeest.jpg) center/cover}
+  .models-txt{background:var(--green);color:#fff;padding:90px 70px;display:flex;flex-direction:column;justify-content:center}
+  .models-txt .eyebrow{color:#fff}.models-txt .eyebrow::before{background:#fff}
+  .models-txt p{color:#eaf6e9;font-size:18px;max-width:520px}
+  .kavels{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 38px}
+  .kavels span{border:1px solid rgba(255,255,255,.45);padding:8px 14px;border-radius:30px;font-size:14px;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+  .kavels span::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff}
+  .models-txt .btn-dark{align-self:flex-start}
+
+  /* history */
+  .history .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px}
+  .history .sticky{position:sticky;top:120px;align-self:start}
+  .history .sticky img{margin-top:34px;border-radius:var(--r);aspect-ratio:16/10;object-fit:cover;width:100%}
+  .tl{list-style:none;position:relative;padding-left:36px}
+  .tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .tl li{position:relative;padding-bottom:46px}
+  .tl li:last-child{padding-bottom:0}
+  .tl li::before{content:"";position:absolute;left:-36px;top:6px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--green)}
+  .tl .yr{font-size:34px;font-stretch:125%;font-weight:900;line-height:1;color:var(--ink)}
+  .tl .gen{display:inline-block;margin:10px 0 8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-d);background:var(--green-l);padding:4px 10px;border-radius:3px}
+  .tl p{color:var(--muted)}
+  .tl p strong{color:var(--ink)}
+
+  /* inspiration */
+  .inspire{background:var(--paper)}
+  .inspire .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .inspire p{color:var(--muted);margin-bottom:16px}
+  .num-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .num{background:#fff;border-radius:var(--r);padding:34px 30px;border-left:4px solid var(--green)}
+  .num b{display:block;font-size:44px;font-stretch:125%;font-weight:900;line-height:1}
+  .num span{color:var(--muted);font-size:15px;display:block;margin-top:8px}
+  .num.dark{background:var(--ink);color:#fff;border-left-color:var(--green)}
+  .num.dark span{color:#aab4b7}
+
+  /* partners */
+  .partners{padding:70px 0;border-bottom:1px solid var(--line)}
+  .partners .wrap{display:flex;align-items:center;gap:50px}
+  .partners h4{flex:0 0 auto;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;max-width:160px;line-height:1.4}
+  .logos{flex:1;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+  .logos img{height:46px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:.65;transition:.3s}
+  .logos img:hover{filter:none;opacity:1}
+
+  /* cta band */
+  .band{background:var(--ink) url(img/middenweg.jpg) center/cover;position:relative;color:#fff;text-align:center;padding:130px 0}
+  .band::before{content:"";position:absolute;inset:0;background:rgba(17,23,26,.82)}
+  .band .wrap{position:relative}
+  .band h2{font-size:clamp(30px,5vw,62px);max-width:900px;margin:16px auto 20px}
+  .band h2 em{font-style:normal;color:var(--green)}
+  .band p{color:#c9d0d2;font-size:19px;max-width:600px;margin:0 auto 36px}
+  .band .cta{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+  .band .eyebrow{color:var(--green)}
+
+  /* contact */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:70px}
+  .c-list{list-style:none;margin:34px 0}
+  .c-list li{display:flex;gap:18px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+  .c-ico{flex:0 0 52px;height:52px;border-radius:var(--r);background:var(--green-l);display:grid;place-items:center}
+  .c-ico svg{width:22px;height:22px;stroke:var(--green-d)}
+  .c-list small{display:block;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+  .c-list a,.c-list b{font-weight:700;font-size:18px}
+  .c-list a:hover{color:var(--green-d)}
+  .map{border-radius:var(--r);overflow:hidden;height:240px;border:1px solid var(--line)}
+  .map iframe{width:100%;height:100%;border:0;filter:grayscale(.4)}
+  form.card{background:var(--paper);border-radius:var(--r);padding:48px}
+  form h3{font-size:26px;margin-bottom:6px}
+  form .hint{color:var(--muted);margin-bottom:28px;font-size:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
+  .field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1px solid #d7dbd9;border-radius:var(--r);background:#fff;color:var(--ink);transition:border .2s,box-shadow .2s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 4px rgba(76,174,76,.15)}
+  .field textarea{min-height:130px;resize:vertical}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips input{display:none}
+  .chips label{text-transform:none;letter-spacing:0;font-weight:600;font-size:15px;padding:10px 16px;border:1px solid #d7dbd9;border-radius:30px;background:#fff;cursor:pointer;margin:0;transition:.2s}
+  .chips input:checked + label{background:var(--ink);color:#fff;border-color:var(--ink)}
+  form .btn{width:100%;justify-content:center;margin-top:8px}
+  .sent{display:none;text-align:center;padding:60px 10px}
+  .sent .ok{width:72px;height:72px;border-radius:50%;background:var(--green);display:grid;place-items:center;margin:0 auto 22px}
+  .sent .ok svg{width:34px;height:34px;stroke:#fff}
+  .sent h3{font-size:26px;margin-bottom:10px}
+  .sent p{color:var(--muted)}
+
+  /* footer */
+  footer{background:var(--ink);color:#aab4b7;padding:80px 0 30px;font-size:15px}
+  .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .f-logo{background:#fff;display:inline-block;padding:14px 18px;border-radius:var(--r);margin-bottom:22px}
+  .f-logo img{height:20px}
+  footer h5{color:#fff;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:10px}
+  footer a:hover{color:var(--green)}
+  .demo-banner{margin:30px 0 20px;background:rgba(76,174,76,.1);border:1px solid rgba(76,174,76,.35);border-radius:var(--r);padding:16px 20px;color:#dfe5e6;font-size:14px;text-align:center}
+  .demo-banner a{color:var(--green);font-weight:700;text-decoration:underline}
+  .copy{text-align:center;font-size:13px;color:#7c878b}
+  .copy a{color:var(--green)}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(10,14,16,.94);display:none;align-items:center;justify-content:center;padding:30px}
+  .lb.open{display:flex}
+  .lb img{max-width:min(1400px,100%);max-height:84vh;border-radius:var(--r)}
+  .lb-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#fff;font-weight:600}
+  .lb button{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:24px;display:grid;place-items:center;transition:.2s}
+  .lb button:hover{background:var(--green)}
+  .lb .x{top:24px;right:24px}.lb .prev{left:24px;top:50%;transform:translateY(-50%)}.lb .next{right:24px;top:50%;transform:translateY(-50%)}
+
+  /* floating call */
+  .fab{position:fixed;right:20px;bottom:20px;z-index:60;background:var(--green);color:#fff;width:58px;height:58px;border-radius:50%;display:none;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .fab svg{width:24px;height:24px;stroke:#fff}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero-bg{animation:none;transform:none}html{scroll-behavior:auto}}
+
+  /* responsive */
+  @media (max-width:1080px){
+    .menu{position:fixed;top:126px;left:0;right:0;bottom:0;background:#fff;flex-direction:column;align-items:flex-start;padding:30px 24px;gap:6px;font-size:22px;transform:translateX(100%);transition:transform .35s;overflow:auto}
+    header.nav.stuck .menu{top:84px}
+    .menu.open{transform:none}
+    .menu a:not(.btn){padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
+    .menu .btn{margin-top:20px;font-size:15px;padding:16px 24px}
+    .burger{display:block}
+    .svc-grid{grid-template-columns:1fr 1fr}
+    .intro .wrap,.history .wrap,.inspire .wrap,.contact .wrap{grid-template-columns:1fr;gap:56px}
+    .history .sticky{position:static}
+    .intro-img .stamp{right:20px}
+    .models-inner{grid-template-columns:1fr}
+    .models-img{min-height:380px}
+    .steps{grid-template-columns:1fr 1fr;row-gap:30px}
+    .step:nth-child(3){padding-left:0}.step:nth-child(3)::before{left:0}
+    .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .partners .wrap{flex-direction:column;align-items:flex-start;gap:26px}
+    .logos{justify-content:flex-start}
+  }
+  @media (max-width:720px){
+    body{font-size:16px}
+    .wrap{padding:0 16px}
+    section{padding:84px 0}
+    .topbar .hide-m{display:none}
+    .topbar .tb-l{gap:16px}
+    header.nav .wrap{height:70px}
+    .menu{top:112px}
+    header.nav.stuck .menu{top:70px}
+    .logo img{height:19px}
+    .stats{grid-template-columns:1fr 1fr;margin-top:48px}
+    .stat{padding:22px 12px 22px 0}
+    .stat + .stat{padding-left:12px}
+    .stat:nth-child(3){padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.2)}
+    .stat:nth-child(4){border-top:1px solid rgba(255,255,255,.2)}
+    .hero .btn{width:100%;justify-content:center}
+    .sec-head{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:40px}
+    .svc-grid{grid-template-columns:1fr}
+    .checks{grid-template-columns:1fr}
+    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:10px}
+    .tile.big{grid-column:span 2;grid-row:span 2}
+    .tile.wide-t{grid-column:span 2}
+    .tile figcaption{font-size:14px;padding:40px 12px 12px}
+    .steps{grid-template-columns:1fr}
+    .step,.step + .step{padding-left:0}
+    .step + .step::before{left:0}
+    .models-txt{padding:64px 16px}
+    .num-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .num{padding:24px 18px}
+    .num b{font-size:32px}
+    .row{grid-template-columns:1fr}
+    form.card{padding:30px 20px}
+    .f-grid{grid-template-columns:1fr;gap:34px}
+    .fab{display:grid}
+    .lb .prev,.lb .next{top:auto;bottom:70px;transform:none}
+    .intro-img .stamp{padding:18px 20px;bottom:20px}
+    .stamp b{font-size:34px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-l">
+      <a href="tel:0725714881">📞 072 - 571 48 81</a>
+      <a href="mailto:info@thuisinbouwen.nl" class="hide-m">✉ info@thuisinbouwen.nl</a>
+    </div>
+    <div class="score"><b>9,7</b><span>klantwaardering op Bouwnu</span></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Kamp Bouwbedrijf home"><img src="logo-kamp.jpg" alt="Kamp Bouwbedrijf"></a>
+    <nav class="menu" id="menu">
+      <a href="#diensten">Diensten</a>
+      <a href="#projecten">Projecten</a>
+      <a href="#modelwoningen">Modelwoningen</a>
+      <a href="#over-ons">Over ons</a>
+      <a href="#inspiratie">Inspiratiecentrum</a>
+      <a href="#contact" class="btn btn-green">Vrijblijvend advies</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-badge rv"><span>SINDS 1872</span> Familiebedrijf in de 5e generatie</div>
+    <h1 class="wide rv d1">Bouwen zit<br>in ons <em>DNA.</em></h1>
+    <p class="sub rv d2">Nieuwbouw, verbouw, renovatie en onderhoud in Heerhugowaard en heel Noord-Holland. Met vakmanschap, korte lijnen en een persoonlijke aanpak, van eerste schets tot oplevering.</p>
+    <div class="cta rv d3">
+      <a href="#contact" class="btn btn-green">Plan een adviesgesprek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#projecten" class="btn btn-ghost">Bekijk projecten</a>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><b data-count="150">0<small>+</small></b><span>jaar bouwervaring</span></div>
+      <div class="stat rv d1"><b>5<small>e</small></b><span>generatie Kamp</span></div>
+      <div class="stat rv d2"><b>9,7</b><span>klantwaardering op Bouwnu</span></div>
+      <div class="stat rv d3"><b data-count="1300">0<small>m²</small></b><span>inspiratiecentrum</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="over-ons">
+  <div class="wrap">
+    <div class="intro-img rv">
+      <img src="img/kappelhof.jpg" alt="Nieuwbouwwoning gebouwd door Kamp Bouwbedrijf" loading="lazy">
+      <div class="stamp"><b>1872</b><span>Opgericht door Bernardus Kamp</span></div>
+    </div>
+    <div>
+      <span class="eyebrow rv">Welkom bij Kamp Bouwbedrijf</span>
+      <h2 class="title wide rv d1">Kwaliteit waar je op kunt bouwen</h2>
+      <p class="rv d1">Met meer dan 150 jaar ervaring zit bouwen in ons DNA. Wat ooit begon als familiebedrijf is sinds 2024 onderdeel van <strong>Thuis in Bouwen</strong>, een sterke samenwerking van vijf bouwbedrijven verspreid over West-Nederland.</p>
+      <p class="rv d2">Wij zijn gespecialiseerd in <strong>kleine tot middelgrote projecten</strong> in zowel de woningbouw als de utiliteitsbouw. Of het nu gaat om nieuwbouw, verbouw, renovatie of onderhoud: wij denken mee, schakelen snel en leveren kwaliteit.</p>
+      <ul class="checks rv d2">
+        <li>Duidelijke afspraken, korte lijnen</li>
+        <li>Bouwkundig advies op maat</li>
+        <li>Van ontwerp tot oplevering</li>
+        <li>Keurmerk Bouwgarant &amp; Woningborg</li>
+        <li>Vaste, VCA-gecertificeerde vakmensen</li>
+        <li>Erkend leerbedrijf &amp; Velux-partner</li>
+      </ul>
+      <a href="#contact" class="btn btn-dark rv d3">Bespreek uw bouwplannen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="diensten">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">Wat wij doen</span>
+        <h2 class="title wide rv d1">Eén aannemer<br>voor alles</h2>
+      </div>
+      <p class="lead rv d2">Van een vrijstaande droomwoning tot een ambulancepost: wij ontzorgen u volledig, voor particulier en zakelijk.</p>
+    </div>
+    <div class="svc-grid">
+      <a href="#contact" class="svc rv">
+        <div class="svc-img"><img src="img/schuurwoning-visser.jpg" alt="Nieuwbouw schuurwoning" loading="lazy"><span class="svc-num">01</span></div>
+        <div class="svc-body"><h3 class="wide">Nieuwbouw</h3><p>Uw eigen woning laten bouwen, helemaal naar uw wensen. Kies uit ruim 30 modelwoningen of start met een eigen schetsontwerp.</p><span class="more">Meer weten →</span></div>
+      </a>
+      <a href="#contact" class="svc rv d1">
+        <div class="svc-img"><img src="img/koot.jpg" alt="Aanbouw en verbouw" loading="lazy"><span class="svc-num">02</span></div>
+        <div class="svc-body"><h3 class="wide">Verbouw</h3><p>Aanbouw, uitbouw, tuinkamer of complete transformatie. Meer ruimte en wooncomfort, zonder gedoe.</p><span class="more">Meer weten →</span></div>
+      </a>
+      <a href="#contact" class="svc rv d2">
+        <div class="svc-img"><img src="img/verbouw.jpg" alt="Renovatie van woning" loading="lazy"><span class="svc-num">03</span></div>
+        <div class="svc-body"><h3 class="wide">Renovatie</h3><p>Uw woning of bedrijfspand weer klaar voor de toekomst: comfortabeler, duurzamer en energiezuiniger.</p><span class="more">Meer weten →</span></div>
+      </a>
+      <a href="#contact" class="svc rv">
+        <div class="svc-img"><img src="img/onderhoud.jpg" alt="Vastgoedonderhoud" loading="lazy"><span class="svc-num">04</span></div>
+        <div class="svc-body"><h3 class="wide">Onderhoud</h3><p>Planmatig en dagelijks vastgoedonderhoud voor particulieren, VvE's en vaste contractpartijen.</p><span class="more">Meer weten →</span></div>
+      </a>
+      <a href="#contact" class="svc rv d1">
+        <div class="svc-img"><img src="img/ambulancepost.jpg" alt="Utiliteitsbouw ambulancepost Hoogkarspel" loading="lazy"><span class="svc-num">05</span></div>
+        <div class="svc-body"><h3 class="wide">Utiliteitsbouw</h3><p>Bedrijfspanden en maatschappelijk vastgoed, zoals de ambulancepost in Hoogkarspel. Degelijk, functioneel en op tijd.</p><span class="more">Meer weten →</span></div>
+      </a>
+      <a href="#contact" class="svc rv d2">
+        <div class="svc-img"><img src="img/vastgoed.jpg" alt="Velux dakramen" loading="lazy"><span class="svc-num">06</span></div>
+        <div class="svc-body"><h3 class="wide">Velux &amp; Arcolux</h3><p>Als erkend Velux-partner plaatsen wij dakramen en dakkapellen voor meer licht en ruimte onder uw dak.</p><span class="more">Meer weten →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projecten">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">Recent opgeleverd</span>
+        <h2 class="title wide rv d1">Ons werk<br>spreekt voor zich</h2>
+      </div>
+      <p class="lead rv d2">Een selectie uit onze nieuwbouw-, verbouw- en utiliteitsprojecten in Noord-Holland. Klik op een foto om te vergroten.</p>
+    </div>
+    <div class="bento">
+      <figure class="tile big rv"><img src="img/schuurwoning-uitgeest.jpg" alt="Schuurwoning Uitgeest" loading="lazy"><figcaption><small>Nieuwbouw</small>Schuurwoning, Uitgeest</figcaption></figure>
+      <figure class="tile rv d1"><img src="img/baan.jpg" alt="Moderne nieuwbouwwoning" loading="lazy"><figcaption><small>Nieuwbouw</small>Moderne vrijstaande woning</figcaption></figure>
+      <figure class="tile tall rv d2"><img src="img/staartmees.jpg" alt="Interieur nieuwbouwwoning Heerhugowaard" loading="lazy"><figcaption><small>Nieuwbouw</small>Heerhugowaard</figcaption></figure>
+      <figure class="tile rv d1"><img src="img/tuinkamer.jpg" alt="Tuinkamer" loading="lazy"><figcaption><small>Verbouw</small>Tuinkamer</figcaption></figure>
+      <figure class="tile wide-t rv"><img src="img/obdam.jpg" alt="Projectbouw Dorpsstraat Obdam" loading="lazy"><figcaption><small>Projectbouw</small>Dorpsstraat, Obdam</figcaption></figure>
+      <figure class="tile rv d1"><img src="img/ambulancepost.jpg" alt="Ambulancepost Hoogkarspel" loading="lazy"><figcaption><small>Utiliteitsbouw</small>Ambulancepost, Hoogkarspel</figcaption></figure>
+      <figure class="tile rv d2"><img src="img/v27.jpg" alt="Modelwoning V27" loading="lazy"><figcaption><small>Modelwoning</small>V27</figcaption></figure>
+      <figure class="tile wide-t rv"><img src="img/middenweg.jpg" alt="Interieur nieuwbouw Middenweg" loading="lazy"><figcaption><small>Nieuwbouw</small>Horstkavel, Middenweg</figcaption></figure>
+      <figure class="tile wide-t rv d1"><img src="img/verbouw.jpg" alt="Verbouw woning" loading="lazy"><figcaption><small>Verbouw</small>A. de Gelderlaan</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <span class="eyebrow rv">Onze werkwijze</span>
+    <h2 class="title wide rv d1">Van idee tot sleutel</h2>
+    <p class="lead rv d2">Eén vast aanspreekpunt, heldere afspraken en geen verrassingen. Zo bouwen we samen aan uw project.</p>
+    <div class="steps">
+      <div class="step rv"><i>01</i><h3 class="wide">Kennismaking</h3><p>Een vrijblijvend gesprek over uw wensen, budget en mogelijkheden, bij u thuis of op ons kantoor.</p></div>
+      <div class="step rv d1"><i>02</i><h3 class="wide">Ontwerp &amp; raming</h3><p>Bouwkundig advies op maat, een helder ontwerp en een transparante kostenraming.</p></div>
+      <div class="step rv d2"><i>03</i><h3 class="wide">Bouw</h3><p>Onze eigen vakmensen en vaste regionale onderaannemers bouwen met oog voor detail.</p></div>
+      <div class="step rv d3"><i>04</i><h3 class="wide">Oplevering</h3><p>Zorgvuldige oplevering met de zekerheid van Bouwgarant of Woningborg.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL HOMES -->
+<section class="models" id="modelwoningen">
+  <div class="models-inner">
+    <div class="models-img" role="img" aria-label="Schuurwoning met houten spant"></div>
+    <div class="models-txt">
+      <span class="eyebrow rv">Eigen woning bouwen?</span>
+      <h2 class="title wide rv d1">Uw droomhuis<br>op uw eigen kavel</h2>
+      <p class="rv d2">Kies uit meer dan 30 modelwoningen en duokavelwoningen, van schuurwoning tot bungalow, en maak hem helemaal van u. Nog geen kavel? Wij kennen de vrije kavels in de regio.</p>
+      <div class="kavels rv d2">
+        <span>Obdam · Tuindersweijde</span>
+        <span>Heerhugowaard · De Draai</span>
+        <span>Spierdijk</span>
+        <span>Castricum · Zanderij-Zuid</span>
+        <span>Winkel · Dahliapark</span>
+        <span>Sint-Pancras · Westrand</span>
+      </div>
+      <a href="#contact" class="btn btn-dark rv d3">Vraag de modelwoningen aan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history">
+  <div class="wrap">
+    <div class="sticky">
+      <span class="eyebrow rv">Familiebedrijf sinds 1872</span>
+      <h2 class="title wide rv d1">Vijf generaties vakmanschap</h2>
+      <p class="lead rv d2">Een begrip in Heerhugowaard en omstreken. Dat is niet zo verwonderlijk als je al ruim 150 jaar aan de weg timmert.</p>
+      <img src="img/onderhoud.jpg" alt="Kamp Bouwbedrijf bus op locatie" class="rv d3" loading="lazy">
+    </div>
+    <ol class="tl">
+      <li class="rv"><div class="yr">1872</div><span class="gen">1e generatie</span><p>Op 10 januari besluit <strong>Bernardus Kamp</strong> een timmermansbedrijfje te starten, omdat de koeien op stal te weinig opbrengen voor zijn gezin. Een stap die generaties later de basis blijkt van het huidige bouwbedrijf.</p></li>
+      <li class="rv"><div class="yr">Gen. II</div><span class="gen">2e generatie</span><p><strong>Jan Kamp</strong> verkoopt ’s avonds verzekeringen. In de werkplaats verschijnen de eerste machines.</p></li>
+      <li class="rv"><div class="yr">1948</div><span class="gen">3e generatie</span><p><strong>Leo Kamp</strong> neemt het roer over en breidt het aannemersbedrijf en het verzekeringskantoor verder uit.</p></li>
+      <li class="rv"><div class="yr">1978</div><span class="gen">4e generatie</span><p>De broers <strong>Co en Louis Kamp</strong> nemen de directie over. Grote groei: nieuwe markten, een eigen bouwmarkt, een CV-loodgietersbedrijf en eigen ontwikkelprojecten.</p></li>
+      <li class="rv"><div class="yr">2020</div><span class="gen">5e generatie</span><p><strong>René en Isabel Kamp</strong> nemen het stokje over. Met een frisse wind worden nieuwe markten aangeboord en mooie opdrachten binnengehaald.</p></li>
+      <li class="rv"><div class="yr">2024</div><span class="gen">Thuis in Bouwen</span><p>Kamp Bouwbedrijf bundelt de krachten met de <strong>Thuis in Bouwen Groep</strong>. Dezelfde gezichten, dezelfde vertrouwde Kamp-service, nu met de kracht van vijf bouwbedrijven in West-Nederland.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- INSPIRATION -->
+<section class="inspire" id="inspiratie">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow rv">Inspiratiecentrum Meerkerk</span>
+      <h2 class="title wide rv d1">Zien, voelen en ervaren</h2>
+      <p class="rv d1">Via Thuis in Bouwen heeft u toegang tot het inspiratiecentrum in Meerkerk, uniek in Nederland. Ruim 1300 m² aan bouw- en interieurmaterialen, letterlijk alles onder één dak.</p>
+      <p class="rv d2">Welke badkamertegel past bij uw smaak? Robuuste wandbekleding of juist verfijnde materialen? U loopt langs de échte producten, tikt even op die mooie dakpan en proeft alvast de sfeer van uw nieuwe badkamer.</p>
+      <a href="#contact" class="btn btn-green rv d3" style="margin-top:14px">Maak een afspraak <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="num-grid">
+      <div class="num dark rv"><b>1300m²</b><span>bouwinspiratie onder één dak</span></div>
+      <div class="num rv d1"><b>45+</b><span>vaste samenwerkingspartners</span></div>
+      <div class="num rv d1"><b>100+</b><span>soorten gevelstenen</span></div>
+      <div class="num rv d2"><b>80</b><span>verschillende dakpannen</span></div>
+      <div class="num rv d2"><b>8</b><span>complete badkamers</span></div>
+      <div class="num dark rv d3"><b>5×</b><span>Beste Bouwer van Nederland (Thuis in Bouwen)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+  <div class="wrap">
+    <h4>Aangesloten &amp; gecertificeerd</h4>
+    <div class="logos">
+      <img src="img/partners/bouwgarant.png" alt="Bouwgarant" loading="lazy">
+      <img src="img/partners/woningborg.png" alt="Woningborg" loading="lazy">
+      <img src="img/partners/bouwendnederland.png" alt="Bouwend Nederland" loading="lazy">
+      <img src="img/partners/velux.png" alt="Velux" loading="lazy">
+      <img src="img/partners/espeq.png" alt="ESPEQ" loading="lazy">
+      <img src="img/partners/volandis.png" alt="Volandis" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow rv">Klaar om te bouwen?</span>
+    <h2 class="wide rv d1">Laten we samen bouwen aan <em>uw toekomst</em></h2>
+    <p class="rv d2">Vertel ons over uw plannen. U krijgt snel een persoonlijke reactie van ons team.</p>
+    <div class="cta rv d3">
+      <a href="#contact" class="btn btn-green">Start uw aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="tel:0725714881" class="btn btn-ghost">Bel 072 - 571 48 81</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow rv">Contact</span>
+      <h2 class="title wide rv d1">Kom langs of<br>neem contact op</h2>
+      <p class="lead rv d2">Een vrijblijvend adviesgesprek is altijd de eerste stap. We denken graag met u mee.</p>
+      <ul class="c-list rv d2">
+        <li><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>Bel ons</small><a href="tel:0725714881">072 - 571 48 81</a></div></li>
+        <li><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><div><small>Mail ons</small><a href="mailto:info@thuisinbouwen.nl">info@thuisinbouwen.nl</a></div></li>
+        <li><span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><small>Bezoekadres</small><b>Middenweg 275, 1701 GD Heerhugowaard</b></div></li>
+      </ul>
+      <div class="map rv d3"><iframe title="Kaart Kamp Bouwbedrijf" loading="lazy" src="https://maps.google.com/maps?q=Middenweg%20275%2C%201701%20GD%20Heerhugowaard&z=15&output=embed"></iframe></div>
+    </div>
+
+    <form class="card rv d1" id="form" novalidate>
+      <div id="formInner">
+        <h3 class="wide">Vrijblijvend advies</h3>
+        <p class="hint">Vul het formulier in, dan nemen wij zo snel mogelijk contact met u op.</p>
+        <div class="field">
+          <label>Waar kunnen we mee helpen?</label>
+          <div class="chips">
+            <input type="radio" name="type" id="t1" checked><label for="t1">Nieuwbouw</label>
+            <input type="radio" name="type" id="t2"><label for="t2">Verbouw</label>
+            <input type="radio" name="type" id="t3"><label for="t3">Renovatie</label>
+            <input type="radio" name="type" id="t4"><label for="t4">Onderhoud</label>
+            <input type="radio" name="type" id="t5"><label for="t5">Zakelijk</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="n">Naam</label><input id="n" required placeholder="Uw naam"></div>
+          <div class="field"><label for="p">Telefoon</label><input id="p" type="tel" placeholder="06 - 12345678"></div>
+        </div>
+        <div class="field"><label for="e">E-mailadres</label><input id="e" type="email" required placeholder="naam@voorbeeld.nl"></div>
+        <div class="field"><label for="m">Uw plannen</label><textarea id="m" placeholder="Vertel kort over uw project, locatie en planning..."></textarea></div>
+        <button type="submit" class="btn btn-green">Verstuur aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="sent" id="sent">
+        <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+        <h3 class="wide">Bedankt!</h3>
+        <p>Uw aanvraag is ontvangen. We nemen zo snel mogelijk contact met u op.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><img src="logo-kamp.jpg" alt="Kamp Bouwbedrijf"></div>
+        <p>Familiebedrijf sinds 1872 voor nieuwbouw, verbouw, renovatie en onderhoud. Onderdeel van de Thuis in Bouwen Groep.</p>
+      </div>
+      <div>
+        <h5>Diensten</h5>
+        <ul><li><a href="#diensten">Nieuwbouw</a></li><li><a href="#diensten">Verbouw</a></li><li><a href="#diensten">Renovatie</a></li><li><a href="#diensten">Onderhoud</a></li><li><a href="#diensten">Utiliteitsbouw</a></li></ul>
+      </div>
+      <div>
+        <h5>Navigatie</h5>
+        <ul><li><a href="#projecten">Projecten</a></li><li><a href="#modelwoningen">Modelwoningen &amp; kavels</a></li><li><a href="#over-ons">Over ons</a></li><li><a href="#inspiratie">Inspiratiecentrum</a></li><li><a href="#contact">Vacatures</a></li></ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul><li>Middenweg 275</li><li>1701 GD Heerhugowaard</li><li><a href="tel:0725714881">072 - 571 48 81</a></li><li><a href="mailto:info@thuisinbouwen.nl">info@thuisinbouwen.nl</a></li></ul>
+      </div>
+    </div>
+
+    <div class="demo-banner">
+      🛈 Dit is een <b>demo-website</b> en niet de officiële site van Kamp Bouwbedrijf.
+      Interesse in een website zoals deze? Neem contact op via <a href="https://brand-on.org" target="_blank" rel="noopener">brand-on.org</a>.
+    </div>
+    <p class="copy">© <span id="yr"></span> Kamp Bouwbedrijf B.V. · Demo gemaakt door <a href="https://brand-on.org" target="_blank" rel="noopener">Brand-On</a></p>
+  </div>
+</footer>
+
+<a href="tel:0725714881" class="fab" aria-label="Bel Kamp Bouwbedrijf"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+
+<div class="lb" id="lb">
+  <button class="x" aria-label="Sluiten">✕</button>
+  <button class="prev" aria-label="Vorige">‹</button>
+  <img alt="">
+  <button class="next" aria-label="Volgende">›</button>
+  <div class="lb-cap"></div>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Header shadow + menu offset when topbar is scrolled away
+  var nav = document.getElementById('nav');
+  function onScroll(){ var y = window.scrollY; nav.classList.toggle('scrolled', y > 10); nav.classList.toggle('stuck', y > 42); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Mobile menu
+  var burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  burger.addEventListener('click', function(){ burger.classList.toggle('open'); menu.classList.toggle('open'); document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : ''; });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ burger.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow = ''; }); });
+
+  // Scroll reveal
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  // Count-up stats
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = +el.dataset.count, suffix = el.querySelector('small').outerHTML, done = false;
+    new IntersectionObserver(function(es, o){
+      if(!es[0].isIntersecting || done) return; done = true; o.disconnect();
+      var t0 = performance.now(), dur = 1600;
+      (function tick(t){ var p = Math.min((t - t0) / dur, 1), v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        el.innerHTML = v.toLocaleString('nl-NL') + suffix; if(p < 1) requestAnimationFrame(tick); })(t0);
+    }).observe(el);
+  });
+
+  // Lightbox
+  var tiles = [].slice.call(document.querySelectorAll('.tile')), lb = document.getElementById('lb'),
+      lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.lb-cap'), idx = 0;
+  function show(i){ idx = (i + tiles.length) % tiles.length; var im = tiles[idx].querySelector('img');
+    lbImg.src = im.src; lbImg.alt = im.alt; lbCap.textContent = tiles[idx].querySelector('figcaption').textContent.replace(/^(\S+)/, '$1 · '); }
+  tiles.forEach(function(t, i){ t.addEventListener('click', function(){ show(i); lb.classList.add('open'); }); });
+  lb.querySelector('.x').onclick = function(){ lb.classList.remove('open'); };
+  lb.querySelector('.prev').onclick = function(e){ e.stopPropagation(); show(idx - 1); };
+  lb.querySelector('.next').onclick = function(e){ e.stopPropagation(); show(idx + 1); };
+  lb.addEventListener('click', function(e){ if(e.target === lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') lb.classList.remove('open'); if(e.key === 'ArrowLeft') show(idx - 1); if(e.key === 'ArrowRight') show(idx + 1); });
+
+  // Demo form (front-end only)
+  document.getElementById('form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var n = document.getElementById('n'), em = document.getElementById('e'), ok = true;
+    [n, em].forEach(function(f){ var bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value));
+      f.style.borderColor = bad ? '#d9534f' : ''; if(bad) ok = false; });
+    if(!ok) return;
+    document.getElementById('formInner').style.display = 'none';
+    document.getElementById('sent').style.display = 'block';
+  });
+</script>
+</body>
+</html>
