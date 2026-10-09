@@ -53,7 +53,7 @@
   .topbar .score b{color:var(--green);font-size:15px}
 
   /* header */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+  header.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);transition:box-shadow .3s}
   header.nav.scrolled{box-shadow:0 8px 30px rgba(27,34,38,.08)}
   header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
   .logo img{height:26px;width:auto}
@@ -89,6 +89,7 @@
   .stat span{display:block;margin-top:8px;color:#bfc7c9;font-size:15px}
 
   section{padding:120px 0}
+  [id]{scroll-margin-top:84px}
 
   /* intro */
   .intro .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center}
@@ -272,8 +273,9 @@
 
   /* responsive */
   @media (max-width:1080px){
-    .menu{position:fixed;top:126px;left:0;right:0;bottom:0;background:#fff;flex-direction:column;align-items:flex-start;padding:30px 24px;gap:6px;font-size:22px;transform:translateX(100%);transition:transform .35s;overflow:auto}
-    header.nav.stuck .menu{top:84px}
+    .menu{position:fixed;top:var(--menu-top,126px);left:0;right:0;bottom:0;background:#fff;flex-direction:column;align-items:flex-start;padding:30px 24px;gap:6px;font-size:22px;transform:translateX(100%);transition:transform .35s,visibility .35s;visibility:hidden;overflow-y:auto;z-index:55}
+    .menu.open{visibility:visible}
+    body.menu-open .mbar{display:none}
     .menu.open{transform:none}
     .menu a:not(.btn){padding:12px 0;width:100%;border-bottom:1px solid var(--line)}
     .menu .btn{margin-top:20px;font-size:15px;padding:16px 24px}
@@ -308,8 +310,9 @@
     .topbar .hide-m{display:none}
     .topbar .tb-l{gap:16px}
     header.nav .wrap{height:64px}
-    .menu{top:102px;padding:16px 16px 40px;font-size:20px}
-    header.nav.stuck .menu{top:64px}
+    .menu{padding:16px 16px 40px;font-size:20px}
+    .menu .btn{align-self:stretch;justify-content:center}
+    [id]{scroll-margin-top:64px}
     .logo img{height:21px}
     .burger{margin-right:-8px}
 
@@ -453,7 +456,7 @@
       <a href="#inspiratie">Inspiratiecentrum</a>
       <a href="#contact" class="btn btn-green">Vrijblijvend advies</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -773,8 +776,16 @@
 
   // Mobile menu
   var burger = document.getElementById('burger'), menu = document.getElementById('menu');
-  burger.addEventListener('click', function(){ burger.classList.toggle('open'); menu.classList.toggle('open'); document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : ''; });
-  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ burger.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow = ''; }); });
+  function setMenu(open){
+    if(open) document.documentElement.style.setProperty('--menu-top', nav.getBoundingClientRect().bottom + 'px');
+    burger.classList.toggle('open', open); menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open); document.body.classList.toggle('menu-open', open);
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', function(){ if(innerWidth > 1080) setMenu(false); });
 
   // Scroll reveal
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
